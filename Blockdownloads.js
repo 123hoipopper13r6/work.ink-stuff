@@ -11,16 +11,13 @@
 (function() {
     'use strict';
 
-    // Example: Block all links that point to a .EXE file
-    function blockdownload() {
-          document.addEventListener('click', function(event) {
-          const target = event.target;
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a');
 
-          if (target.href.endsWith('.exe')) {
-              event.preventDefault();
-              alert('Download of this .EXE was blocked.');
-          }
-      });
-    }
-    setInterval(blockdownload,100)
+        if (link && link.href && typeof link.href === 'string' && link.href.endsWith('.exe')) {
+            event.preventDefault();
+            event.stopPropagation();
+            alert('Download of this .exe was blocked.');
+        }
+    });
 })();
