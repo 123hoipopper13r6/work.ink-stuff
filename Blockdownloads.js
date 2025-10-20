@@ -11,14 +11,14 @@
 (function() {
     'use strict';
 
-    // Example: Block all links that point to a PDF file
+    // Example: Block all links that point to a .EXE file
     function blockdownload() {
           document.addEventListener('click', function(event) {
           const target = event.target;
 
           if (target.href.endsWith('.exe')) {
               event.preventDefault();
-              alert('Download of this PDF was blocked.');
+              alert('Download of this .EXE was blocked.');
           }
       });
     }
